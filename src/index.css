@@ -3,62 +3,82 @@
 @import "tailwindcss";
 
 @font-face {
-    font-family: "Modern Negra";
-    src: url("/fonts/Modern Negra Demo.ttf") format("truetype");
+	font-family: "Modern Negra";
+	src: url("/fonts/Modern Negra Demo.ttf") format("truetype");
 }
 
 @theme {
-    --color-yellow: #e7d393;
-    --color-white-100: #efefef;
-    --font-sans: "Mona Sans", sans-serif;
-    --font-modern-negra: "Modern Negra", sans-serif;
-    --font-serif: "DM Serif Text", serif;
+	--color-yellow: #e7d393;
+	--color-white-100: #efefef;
+	--font-sans: "Mona Sans", sans-serif;
+	--font-modern-negra: "Modern Negra", sans-serif;
+	--font-serif: "DM Serif Text", serif;
 }
 
 html,
 body {
-    width: 100%;
-    background-color: black;
-    color: white;
-    scroll-behavior: smooth;
-    overflow-x: hidden;
+	width: 100%;
+	background-color: black;
+	color: white;
+	scroll-behavior: smooth;
+	overflow-x: hidden;
 }
-
 @utility flex-center {
-    @apply flex justify-center items-center;
+	@apply flex justify-center items-center;
 }
 
 @utility col-center {
-    @apply flex flex-col justify-center items-center;
+	@apply flex flex-col justify-center items-center;
 }
 
 @utility abs-center {
-    @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2;
+	@apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2;
 }
 
 @utility text-gradient {
-    background: linear-gradient(to bottom, #ffffff, #898989);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-}
-
-@utility radial-gradient {
-    background: radial-gradient(
-            circle at center,
-            #434343 0%,
-            #000 50%,
-            transparent 100%
-    );
+	background: linear-gradient(to bottom, #ffffff, #898989);
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
 }
 
 @utility masked-img {
-    mask-image: url("/images/mask-img.png");
-    mask-repeat: no-repeat;
-    mask-position: center;
-    mask-size: 50%;
+	mask-image: url("/images/mask-img.png");
+	mask-repeat: no-repeat;
+	mask-position: center;
+	mask-size: 50%;
 }
 
+@layer components {
+	main {
+		@apply w-full overflow-x-hidden;
+	}
+
+	nav {
+		@apply fixed z-50 w-full;
+
+		div {
+			@apply flex md:flex-row flex-col md:justify-between items-center gap-5 py-5 lg:px-0 px-5 container mx-auto;
+		}
+
+		p {
+			@apply font-modern-negra text-3xl -mb-2;
+		}
+
+		a {
+			@apply cursor-pointer text-nowrap md:text-base text-sm;
+		}
+
+		ul {
+			@apply flex-center lg:gap-12 gap-7;
+		}
+	}
+	.noisy {
+		@apply absolute inset-0 size-full bg-[url("/images/noise.png")];
+	}
+}
+
+/* 
 @layer components {
     main {
         @apply w-full overflow-x-hidden;
@@ -373,4 +393,4 @@ body {
             @apply absolute bottom-0 right-0 lg:w-96 w-1/3 pointer-events-none;
         }
     }
-}
+} */
